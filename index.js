@@ -24,7 +24,7 @@ mongo.on('error', (error) => console.log(error))
     .once('open', () => console.log('Connected to DB!'));
 
 // TYPEDEFS
-const typeDefs = importSchema( __dirname + 'schema.graphql' );
+const typeDefs = importSchema( __dirname + '/schema.graphql' );
 
 // We pass typeDefs and resolvers to GraphQLServer
 const server = new GraphQLServer({typeDefs, resolvers});
