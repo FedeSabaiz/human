@@ -1,0 +1,110 @@
+type Query{
+    getTeachers: [Teacher]!
+    getSingleTeacher(id:ID!):Teacher!
+    getStudents: [Student]!
+    getSingleStudent(id:ID!):Student!
+    getRooms: [Room]!
+    getSingleRoom(id:ID!): Room!
+}
+
+type Mutation{
+    createNewTeacher(data:TeacherInput!): Teacher!
+    updateOneTeacher(id:ID!, data:TeacherInputUpdate!):Teacher!
+    deleteOneTeacher(id:ID!):String!
+    createNewStudent(data:StudentInput!): Student!
+    updateOneStudent(id:ID!, data:StudentInputUpdate!):Student!
+    deleteOneStudent(id:ID!):String!
+    createNewRoom(data:RoomInput!): Room!
+    updateOneRoom(id:ID!, data:RoomInputUpdate!): Room!
+    deleteOneRoom(id:ID!): String!
+}
+
+type Teacher{
+    _id:ID!
+    first_name: String!
+    last_name: String!
+    email: String!
+    birth_date: String!
+    rooms: [Room]!
+    gender: GENDERS
+    profile_pic: String!
+}
+
+input TeacherInput{
+    first_name: String!
+    last_name: String!
+    email: String!
+    password: String
+    birth_date: String
+    gender: GENDERS
+    profile_pick: String
+}
+
+input TeacherInputUpdate{
+    first_name: String
+    last_name: String
+    email: String
+    password: String
+    birth_date: String
+    gender: GENDERS
+    profile_pick: String
+}
+
+type Student{
+    _id:ID!
+    first_name: String!
+    last_name: String!
+    email: String!
+    birth_date: String!
+    rooms: [Room]!
+    gender: GENDERS
+    profile_pic: String!
+}
+
+input StudentInput{
+    first_name: String!
+    last_name: String!
+    email: String!
+    password: String!
+    birth_date: String
+    gender: GENDERS
+    profile_pic: String
+}
+
+input StudentInputUpdate{
+    first_name: String
+    last_name: String
+    email: String
+    password: String 
+    birth_date: String
+    gender: GENDERS
+    profile_pic: String
+    is_active: Boolean
+}
+
+type Room{
+    _id:ID!
+    topic: String!
+    teacher: Teacher!
+    students: [Student]!
+    is_active: Boolean
+}
+
+input RoomInput{
+    topic: String!
+    teacher: ID!
+    students: [ID]
+    is_active: Boolean
+}
+
+input RoomInputUpdate{
+    topic: String
+    teacher: ID
+    students: [ID]
+    is_active: Boolean
+}
+enum GENDERS{
+    M
+    F
+    O
+}
