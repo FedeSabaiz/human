@@ -68,7 +68,6 @@ type Student{
     last_name: String!
     email: EmailAddress!
     birth_date: String!
-    rooms: [Room]!
     gender: GENDERS
     profile_pic: URL!
 }
@@ -98,21 +97,21 @@ type Room{
     _id:ID!
     topic: String!
     teacher: Teacher!
-    students: [Student]!
+    student: Student!
     is_active: Boolean
 }
 
 input RoomInput{
     topic: String!
     teacher: ID!
-    students: [ID]
+    student: ID
     is_active: Boolean
 }
 
 input RoomInputUpdate{
     topic: String
     teacher: ID
-    students: [ID]
+    student: ID
     is_active: Boolean
 }
 enum GENDERS{

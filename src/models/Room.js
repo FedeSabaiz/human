@@ -11,8 +11,8 @@ const RoomSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'teacher'
     },
-    students: {
-        type: [Schema.Types.ObjectId],
+    student: {
+        type: Schema.Types.ObjectId,
         ref: 'student'
     },
     is_active: {
