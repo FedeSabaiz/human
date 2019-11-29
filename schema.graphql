@@ -1,0 +1,122 @@
+scalar EmailAddress
+scalar URL
+scalar Upload
+directive @auth on FIELD_DEFINITION | FIELD
+
+type Query{
+    getTeachers: [Teacher]!
+    getSingleTeacher(id:ID!):Teacher!
+    getStudents: [Student]!
+    getSingleStudent(id:ID!):Student!
+    getRooms: [Room]!
+    getSingleRoom(id:ID!): Room!
+    me: Teacher! @auth
+}
+
+type Mutation{
+    createNewTeacher(data:TeacherInput!): Teacher!@auth
+    updateOneTeacher(id:ID!, data:TeacherInputUpdate!):Teacher!@auth
+    deleteOneTeacher(id:ID!):String!@auth
+    createNewStudent(data:StudentInput!): Student!@auth
+    updateOneStudent(id:ID!, data:StudentInputUpdate!):Student!@auth
+    deleteOneStudent(id:ID!):String!@auth
+    createNewRoom(data:RoomInput!): Room!@auth
+    updateOneRoom(id:ID!, data:RoomInputUpdate!): Room!@auth
+    deleteOneRoom(id:ID!): String!@auth
+    login(email:EmailAddress!, password: String!): Auth!
+}
+
+type Auth{
+    token: String!
+    message: String!
+}
+
+type Teacher{
+    _id:ID!
+    first_name: String!
+    last_name: String!
+    email: EmailAddress!
+    birth_date: String!
+    rooms: [Room]!
+    gender: GENDERS
+    profile_pic: URL!
+}
+
+input TeacherInput{
+    first_name: String!
+    last_name: String!
+    email: EmailAddress!
+    password: String!
+    birth_date: String
+    gender: GENDERS
+    profile_pick: String
+}
+
+input TeacherInputUpdate{
+    first_name: String
+    last_name: String
+    email: EmailAddress
+    password: String
+    birth_date: String
+    gender: GENDERS
+    profile_pick: URL
+}
+
+type Student{
+    _id:ID!
+    first_name: String!
+    last_name: String!
+    email: EmailAddress!
+    birth_date: String!
+    rooms: [Room]!
+    gender: GENDERS
+    profile_pic: URL!
+}
+
+input StudentInput{
+    first_name: String!
+    last_name: String!
+    email: EmailAddress!
+    password: String!
+    birth_date: String
+    gender: GENDERS
+    profile_pic: String
+}
+
+input StudentInputUpdate{
+    first_name: String
+    last_name: String
+    email: EmailAddress
+    password: String 
+    birth_date: String
+    gender: GENDERS
+    profile_pic: String
+    is_active: Boolean
+}
+
+type Room{
+    _id:ID!
+    topic: String!
+    teacher: Teacher!
+    students: [Student]!
+    is_active: Boolean
+}
+
+input RoomInput{
+    topic: String!
+    teacher: ID!
+    students: [ID]
+    is_active: Boolean
+}
+
+input RoomInputUpdate{
+    topic: String
+    teacher: ID
+    students: [ID]
+    is_active: Boolean
+}
+enum GENDERS{
+    M
+    F
+    O
+}
