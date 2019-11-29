@@ -1,4 +1,5 @@
 const { createTeacher, updateTeacher, deleteTeacher } = require('../../services/TeacherService');
+const authenticate = require('../../utils/authenticate');
 
 const createNewTeacher = async (_, { data }) => {
     const teacher = await createTeacher(data);
@@ -17,8 +18,17 @@ const deleteOneTeacher = async (_, { id }) => {
     return 'Teacher deleted';
 };
 
+const login = async (_, params) => {
+    const token = await authenticate(params).catch(e => { throw e;});
+    return {
+        token: token,
+        message: 'Login successful'
+    };
+};
+
 module.exports = {
     createNewTeacher,
     updateOneTeacher,
-    deleteOneTeacher
+    deleteOneTeacher,
+    login
 };

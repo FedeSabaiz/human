@@ -11,7 +11,12 @@ const getSingleTeacher = async (_, { id }) => {
     return teacher;
 };
 
+const me = async (_, __, { user }) => {
+    return user;
+};
+
 module.exports = {
     getTeachers,
-    getSingleTeacher
+    getSingleTeacher,
+    me
 };
