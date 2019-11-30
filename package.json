@@ -1,0 +1,36 @@
+{
+  "name": "just-talk",
+  "version": "1.0.0",
+  "description": "Human development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js -f *.graphql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FedeSabaiz/human.git"
+  },
+  "author": "Federico",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FedeSabaiz/human/issues"
+  },
+  "homepage": "https://github.com/FedeSabaiz/human#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "dotenv": "^8.2.0",
+    "graphql-scalars": "^1.0.4",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.12"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
