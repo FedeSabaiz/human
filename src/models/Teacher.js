@@ -23,6 +23,10 @@ const TeacherSchema = new Schema({
     birth_date: {
         type: Date
     },
+    roll: {
+        type: String,
+        enum: ['T', 'S']
+    },
     gender: {
         type: String,
         enum: ['M', 'F', 'O']
