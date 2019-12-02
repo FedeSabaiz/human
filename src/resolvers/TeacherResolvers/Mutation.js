@@ -20,10 +20,21 @@ const deleteOneTeacher = async (_, { id }) => {
 
 const login = async (_, params) => {
     const token = await authenticate(params).catch(e => { throw e;});
-    return {
-        token: token,
-        message: 'Login successful'
-    };
+
+    // console.log(params);
+    if(params.roll === 'T') {
+        return {
+            token: token,
+            message: 'Login successful, wellcome Teacher'
+        };
+    }
+    if (params.roll === 'S') {
+        return {
+            token: token,
+            message: 'Login successful, wellcome Student'
+        };
+    }
+
 };
 
 module.exports = {
