@@ -22,6 +22,9 @@ const StudentSchema = new Schema({
     birth_date: {
         type:String,
     },
+    cover: {
+        type: String
+    },
     rooms: {
         type: [Schema.Types.ObjectId],
         ref: 'rooms'

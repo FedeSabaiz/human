@@ -41,7 +41,7 @@ type Teacher{
     rooms: [Room]!
     roll: ROLL!
     gender: GENDERS
-    profile_pic: URL!
+    cover: URL
 }
 
 input TeacherInput{
@@ -52,7 +52,7 @@ input TeacherInput{
     birth_date: String
     roll: ROLL!
     gender: GENDERS
-    profile_pick: String
+    cover: Upload
 }
 
 input TeacherInputUpdate{
@@ -63,7 +63,7 @@ input TeacherInputUpdate{
     birth_date: String
     roll: ROLL
     gender: GENDERS
-    profile_pick: URL
+    cover: Upload
 }
 
 type Student{
@@ -74,7 +74,7 @@ type Student{
     birth_date: String!
     roll: ROLL!
     gender: GENDERS
-    profile_pic: URL!
+    cover: URL
 }
 
 input StudentInput{
@@ -85,7 +85,7 @@ input StudentInput{
     birth_date: String
     roll: ROLL!
     gender: GENDERS
-    profile_pic: String
+    cover: Upload
 }
 
 input StudentInputUpdate{
@@ -96,7 +96,7 @@ input StudentInputUpdate{
     birth_date: String
     roll: ROLL
     gender: GENDERS
-    profile_pic: String
+    cover: Upload
     is_active: Boolean
 }
 

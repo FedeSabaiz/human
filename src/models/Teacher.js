@@ -31,6 +31,9 @@ const TeacherSchema = new Schema({
         type: String,
         enum: ['M', 'F', 'O']
     },
+    cover: {
+        type: String
+    },
     rooms: {
         type: [Schema.Types.ObjectId],
         ref: 'rooms'
