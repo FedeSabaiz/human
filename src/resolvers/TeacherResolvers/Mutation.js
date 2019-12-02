@@ -1,12 +1,40 @@
 const { createTeacher, updateTeacher, deleteTeacher } = require('../../services/TeacherService');
 const authenticate = require('../../utils/authenticate');
+const storage = require('../../utils/storage');
 
-const createNewTeacher = async (_, { data }) => {
+const createNewTeacher = async (_, { data }, { user }) => {
+    data.teacher = user._id;
+    if(data.cover) {
+        const { createReadStream } = await data.cover;
+        const stream = createReadStream();
+        const image = await storage({ stream });
+        console.log(stream);
+        console.log(image);
+        data = {
+            ...data,
+            cover: image.url,
+        };
+    }
+
     const teacher = await createTeacher(data);
+    console.log(teacher);
     return teacher;
 };
 
-const updateOneTeacher = async (_, { id, data }) => {
+const updateOneTeacher = async (_, { id, data }, { user }) => {
+    data.teacher = user._id;
+    if(data.cover) {
+        const { createReadStream } = await data.cover;
+        const stream = createReadStream();
+        const image = await storage({ stream });
+        console.log(stream);
+        console.log(image);
+        data = {
+            ...data,
+            cover: image.url,
+        };
+    }
+
     const teacher = await updateTeacher(id, data);
     if(!teacher) throw new Error('Teacher does not exist!');
     return teacher;
