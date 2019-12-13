@@ -1,6 +1,9 @@
 const { Teachers } = require('../models');
 
-const createTeacher = (data) => Teachers.create(data);
+const createTeacher = (data) => {
+    Teachers.syncIndexes();
+    return Teachers.create(data);
+};
 const getAllTeachers = () => Teachers.find({
     is_active: true
 }).populate({

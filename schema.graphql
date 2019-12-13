@@ -10,7 +10,8 @@ type Query{
     getSingleStudent(id:ID!):Student!
     getRooms: [Room]!
     getSingleRoom(id:ID!): Room!
-    me: Teacher! @auth
+    me: Teacher!@auth
+    meStudent: Student!@auth
 }
 
 type Mutation{
@@ -23,7 +24,7 @@ type Mutation{
     createNewRoom(data:RoomInput!): Room!@auth
     updateOneRoom(id:ID!, data:RoomInputUpdate!): Room!@auth
     deleteOneRoom(id:ID!): String!@auth
-    login(email:EmailAddress!, password: String!): Auth!
+    login(email:EmailAddress!, password: String!, roll: String!): Auth!
 }
 
 type Auth{
@@ -38,8 +39,9 @@ type Teacher{
     email: EmailAddress!
     birth_date: String!
     rooms: [Room]!
+    roll: ROLL!
     gender: GENDERS
-    profile_pic: URL!
+    cover: URL
 }
 
 input TeacherInput{
@@ -48,8 +50,9 @@ input TeacherInput{
     email: EmailAddress!
     password: String!
     birth_date: String
+    roll: ROLL!
     gender: GENDERS
-    profile_pick: String
+    cover: Upload
 }
 
 input TeacherInputUpdate{
@@ -58,8 +61,9 @@ input TeacherInputUpdate{
     email: EmailAddress
     password: String
     birth_date: String
+    roll: ROLL
     gender: GENDERS
-    profile_pick: URL
+    cover: Upload
 }
 
 type Student{
@@ -68,8 +72,9 @@ type Student{
     last_name: String!
     email: EmailAddress!
     birth_date: String!
+    roll: ROLL!
     gender: GENDERS
-    profile_pic: URL!
+    cover: URL
 }
 
 input StudentInput{
@@ -78,8 +83,9 @@ input StudentInput{
     email: EmailAddress!
     password: String!
     birth_date: String
+    roll: ROLL!
     gender: GENDERS
-    profile_pic: String
+    cover: Upload
 }
 
 input StudentInputUpdate{
@@ -88,8 +94,9 @@ input StudentInputUpdate{
     email: EmailAddress
     password: String 
     birth_date: String
+    roll: ROLL
     gender: GENDERS
-    profile_pic: String
+    cover: Upload
     is_active: Boolean
 }
 
@@ -118,4 +125,8 @@ enum GENDERS{
     M
     F
     O
+}
+enum ROLL{
+    T
+    S
 }

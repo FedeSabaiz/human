@@ -11,7 +11,12 @@ const getSingleStudent = async (_, { id }) => {
     return student;
 };
 
+const meStudent = async (_, __, { user }) => {
+    return user;
+};
+
 module.exports = {
     getStudents,
-    getSingleStudent
+    getSingleStudent,
+    meStudent
 };
