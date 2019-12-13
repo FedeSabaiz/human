@@ -48,6 +48,9 @@ const TeacherSchema = new Schema({
 
 TeacherSchema.pre('save', function (next) {
     const teacher = this;
+
+    // teacher.plugin(uniqueValidator);
+
     const SALT_FACTOR = 10;
     if(!teacher.isModified('password')) { return next();}
     bcrypt.genSalt(SALT_FACTOR, function (err, salt) {

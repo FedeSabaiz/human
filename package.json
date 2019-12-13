@@ -4,7 +4,7 @@
   "description": "Human development",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "set NODE_ENV=test && jest --detectOpenHandles",
     "dev": "nodemon index.js -f *.graphql"
   },
   "repository": {
@@ -23,6 +23,7 @@
     "dotenv": "^8.2.0",
     "graphql-scalars": "^1.0.4",
     "graphql-yoga": "^1.18.3",
+    "jest": "^24.9.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.12"
   },
